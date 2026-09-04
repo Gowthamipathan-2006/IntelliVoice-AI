@@ -7,10 +7,9 @@ def main():
     print("\nUser:")
     print(question)
 
-    print("\nAI:")
-    
     response = generate_response(question)
 
+    print("\nAI:")
     print(response)
 
 
