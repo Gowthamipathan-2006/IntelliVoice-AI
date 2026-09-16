@@ -1,0 +1,19 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*_backup.py
+*.tmp
+*.temp
+
+all codes.txt
+all_project_code.txt

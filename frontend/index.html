@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IntelliVoice AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                🤖
+            </div>
+
+            <div>
+                <h1>IntelliVoice</h1>
+                <p>Voice AI Assistant</p>
+            </div>
+
+        </div>
+
+
+        <!-- NEW CONVERSATION -->
+
+        <button
+            class="new-conversation"
+            id="newConversation"
+            type="button"
+        >
+            <span>＋</span>
+            <strong>New Conversation</strong>
+        </button>
+
+
+        <!-- ANYWHERE DOOR -->
+
+        <button
+            class="anywhere-door"
+            id="anywhereDoor"
+            type="button"
+        >
+
+            <span class="door-icon">
+                🚪
+            </span>
+
+            <span>
+
+                <strong>
+                    Anywhere Door
+                </strong>
+
+                <small>
+                    Ask me anything
+                </small>
+
+            </span>
+
+        </button>
+
+
+        <!-- QUICK TOOLS -->
+
+        <div class="sidebar-title">
+            QUICK TOOLS
+        </div>
+
+
+        <div class="quick-tools">
+
+            <button
+                class="quick-tool"
+                data-message="Calculate 25 * 8"
+                type="button"
+            >
+
+                <span class="quick-icon">
+                    🧮
+                </span>
+
+                <span>
+
+                    <strong>
+                        Calculator
+                    </strong>
+
+                    <small>
+                        Math calculations
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-tool"
+                data-message="What is the weather in Vijayawada?"
+                type="button"
+            >
+
+                <span class="quick-icon">
+                    🌤️
+                </span>
+
+                <span>
+
+                    <strong>
+                        Weather
+                    </strong>
+
+                    <small>
+                        Live weather
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                class="quick-tool"
+                data-message="Analyze my uploaded file"
+                type="button"
+            >
+
+                <span class="quick-icon">
+                    📄
+                </span>
+
+                <span>
+
+                    <strong>
+                        File Analysis
+                    </strong>
+
+                    <small>
+                        PDF & images
+                    </small>
+
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- RECENT CONVERSATIONS -->
+
+        <div class="sidebar-title recent-title">
+            RECENT CONVERSATIONS
+        </div>
+
+
+        <div
+            class="history-list"
+            id="historyList"
+        >
+
+            <div class="history-empty">
+                No conversations yet
+            </div>
+
+        </div>
+
+
+        <!-- ONLINE STATUS -->
+
+        <div class="sidebar-online">
+
+            <span class="online-dot"></span>
+
+            IntelliVoice Online
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="header-left">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    type="button"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h2>
+                        IntelliVoice AI
+                    </h2>
+
+                    <div class="header-online">
+
+                        <span class="online-dot"></span>
+
+                        Voice Assistant Online
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="clear-button"
+                id="headerClear"
+                type="button"
+            >
+                🗑️ Clear
+            </button>
+
+        </header>
+
+
+
+        <!-- =================================================
+             WELCOME + DORAEMON
+             ================================================= -->
+
+        <section
+            class="welcome-area"
+            id="welcomeArea"
+        >
+
+            <div class="welcome-label">
+                WELCOME
+            </div>
+
+
+            <h1>
+                Hello! 👋
+            </h1>
+
+
+            <p>
+                I'm <strong>IntelliVoice</strong>.
+                How can I help you?
+            </p>
+
+
+
+            <!-- =================================================
+                 DORAEMON ASSISTANT
+                 ================================================= -->
+
+            <div
+                class="doraemon-container"
+                id="doraemonContainer"
+            >
+
+                <div
+                    class="doraemon ready"
+                    id="doraemon"
+                >
+
+
+                    <!-- HEAD -->
+
+                    <div class="dora-head">
+
+                        <div class="dora-face">
+
+
+                            <!-- LEFT EYE -->
+
+                            <div class="dora-eye eye-left">
+                                <span></span>
+                            </div>
+
+
+                            <!-- RIGHT EYE -->
+
+                            <div class="dora-eye eye-right">
+                                <span></span>
+                            </div>
+
+
+                            <!-- NOSE -->
+
+                            <div class="dora-nose"></div>
+
+
+                            <!-- MOUTH -->
+
+                            <div
+                                class="dora-mouth"
+                                id="doraemonMouth"
+                            ></div>
+
+
+                            <!-- WHISKERS -->
+
+                            <div class="whisker w1"></div>
+                            <div class="whisker w2"></div>
+                            <div class="whisker w3"></div>
+                            <div class="whisker w4"></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BODY -->
+
+                    <div class="dora-body">
+
+                        <div class="dora-belly"></div>
+
+                        <div class="dora-bell"></div>
+
+                    </div>
+
+
+
+                    <!-- ARMS -->
+
+                    <div class="dora-arm arm-left"></div>
+
+                    <div class="dora-arm arm-right"></div>
+
+
+
+                    <!-- FEET -->
+
+                    <div class="dora-foot foot-left"></div>
+
+                    <div class="dora-foot foot-right"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ASSISTANT STATUS -->
+
+            <div
+                class="assistant-status"
+                id="assistantStatus"
+            >
+                Ready
+            </div>
+
+
+            <div
+                class="assistant-substatus"
+                id="assistantSubstatus"
+            >
+                Tap the microphone and speak
+            </div>
+
+
+
+            <!-- MAIN MICROPHONE -->
+
+            <button
+                class="main-voice-button"
+                id="mainVoiceButton"
+                type="button"
+                aria-label="Speak to IntelliVoice"
+            >
+                🎤
+            </button>
+
+
+            <div class="voice-label">
+                Tap to speak
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CHAT AREA
+             ================================================= -->
+
+        <section
+            class="chat-area"
+            id="chatMessages"
+        >
+
+            <!-- TYPING INDICATOR -->
+
+            <div
+                class="typing-indicator"
+                id="typingIndicator"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OLD PREVIEW
+             ================================================= -->
+
+        <div
+            id="conversationPreview"
+            class="conversation-preview"
+        >
+
+            <div id="previewUser"></div>
+
+            <div id="previewAI"></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INPUT SECTION
+             ================================================= -->
+
+        <section class="input-section">
+
+
+            <!-- MAIN ASK BAR -->
+
+            <div class="input-wrapper">
+
+                <textarea
+                    id="messageInput"
+                    rows="1"
+                    placeholder="Ask IntelliVoice anything..."
+                    autocomplete="off"
+                ></textarea>
+
+
+                <button
+                    id="sendButton"
+                    class="send-button"
+                    type="button"
+                    aria-label="Send message"
+                >
+                    ➤
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TOOLS BELOW ASK BAR
+                 ================================================= -->
+
+            <div class="input-tools">
+
+
+                <!-- PDF -->
+
+                <button
+                    class="input-tool"
+                    id="pdfButton"
+                    type="button"
+                >
+
+                    <span class="tool-icon">
+                        📄
+                    </span>
+
+                    <span>
+                        PDF
+                    </span>
+
+                </button>
+
+
+
+                <!-- IMAGE -->
+
+                <button
+                    class="input-tool"
+                    id="imageButton"
+                    type="button"
+                >
+
+                    <span class="tool-icon">
+                        📸
+                    </span>
+
+                    <span>
+                        Image
+                    </span>
+
+                </button>
+
+
+
+                <!-- STOP -->
+
+                <button
+                    class="input-tool stop-tool"
+                    id="stopVoiceButton"
+                    type="button"
+                >
+
+                    <span class="tool-icon">
+                        🔇
+                    </span>
+
+                    <span>
+                        Stop
+                    </span>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILE PANEL
+                 ================================================= -->
+
+            <div
+                class="file-panel"
+                id="filePanel"
+            >
+
+                <div class="selected-file">
+
+                    <span id="selectedFileName">
+                        No file selected
+                    </span>
+
+
+                    <button
+                        id="removeFileButton"
+                        type="button"
+                        aria-label="Remove selected file"
+                    >
+                        ✕
+                    </button>
+
+                </div>
+
+
+                <input
+                    id="fileQuestion"
+                    type="text"
+                    placeholder="Ask something about this file..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="analyzeFileButton"
+                    type="button"
+                >
+                    Analyze File
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 HIDDEN FILE INPUTS
+                 ================================================= -->
+
+            <input
+                type="file"
+                id="pdfInput"
+                accept=".pdf,application/pdf"
+            >
+
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/jpeg,image/png,image/webp"
+            >
+
+
+
+            <!-- =================================================
+                 SUGGESTIONS
+                 ================================================= -->
+
+            <div class="suggestions">
+
+
+                <button
+                    class="suggestion"
+                    data-message="Calculate 25 * 8"
+                    type="button"
+                >
+                    🧮 Calculate 25 * 8
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    data-message="What's the weather today?"
+                    type="button"
+                >
+                    🌤️ What's the weather today?
+                </button>
+
+
+                <button
+                    class="suggestion"
+                    data-message="What is Artificial Intelligence?"
+                    type="button"
+                >
+                    🤖 What is Artificial Intelligence?
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="overlay"
+    id="overlay"
+></div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
