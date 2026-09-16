@@ -781,20 +781,104 @@ def _generate_with_ollama(
 # OLLAMA RESPONSE - COMPATIBILITY FUNCTION
 # ============================================================
 
-def generate_ollama_response(
-    message: str
-):
+def generate_ollama_response(message: str):
     """
     Compatibility function used by file_analysis.py.
 
-    This keeps the existing PDF/file-analysis code working
-    while using the current Ollama implementation.
+    PDF/file analysis will use Gemini first.
+    Ollama is used only as a fallback.
     """
 
-    return _generate_with_ollama(
-        message
-    )
+    message = (message or "").strip()
 
+    if not message:
+        return "Please provide a question about the uploaded file."
+
+    # ========================================================
+    # TRY GEMINI FIRST
+    # ========================================================
+
+    try:
+
+        print("=" * 60)
+        print("FILE ANALYSIS AI RESPONSE")
+        print("Trying Gemini...")
+        print("=" * 60)
+
+        answer = _generate_with_gemini(
+            message,
+            max_attempts=2
+        )
+
+        answer = str(answer).strip()
+
+        if answer:
+            print("✅ Gemini generated file-analysis response.")
+
+            # Save to conversation memory
+            _save_memory_safely(
+                message,
+                answer
+            )
+
+            return answer
+
+    except Exception as gemini_error:
+
+        print("⚠️ Gemini file-analysis response failed:")
+        print(gemini_error)
+
+        # ----------------------------------------------------
+        # If Ollama fallback is disabled, return useful error
+        # ----------------------------------------------------
+
+        if not USE_OLLAMA_FALLBACK:
+
+            return (
+                "I extracted the file successfully, "
+                "but I could not generate an AI answer right now."
+            )
+
+        print("Switching to Ollama fallback...")
+
+
+    # ========================================================
+    # OLLAMA FALLBACK
+    # ========================================================
+
+    try:
+
+        answer = _generate_with_ollama(
+            message
+        )
+
+        answer = str(answer).strip()
+
+        if answer:
+
+            print("✅ Ollama generated file-analysis response.")
+
+            _save_memory_safely(
+                message,
+                answer
+            )
+
+            return answer
+
+    except Exception as ollama_error:
+
+        print("⚠️ Ollama file-analysis fallback failed:")
+        print(ollama_error)
+
+    # ========================================================
+    # FINAL ERROR
+    # ========================================================
+
+    return (
+        "I extracted the PDF successfully, "
+        "but I could not generate an AI answer right now. "
+        "Please try again."
+    )
 
 # ============================================================
 # MAIN RESPONSE FUNCTION

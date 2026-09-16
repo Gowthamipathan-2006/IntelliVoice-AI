@@ -260,7 +260,7 @@ ANSWER:
     try:
 
         print("=" * 60)
-        print("OLLAMA PDF QUESTION ANSWERING")
+        print("PDF QUESTION ANSWERING")
         print("=" * 60)
         print(f"PDF      : {filename}")
         print(f"Question : {question}")
@@ -288,7 +288,7 @@ Question:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅ Answer generated using your local Ollama AI model.
+✅ Answer generated successfully by IntelliVoice AI.
 """.strip()
 
         return (
@@ -299,7 +299,7 @@ Question:
     except Exception as e:
 
         print("=" * 60)
-        print("OLLAMA PDF ANALYSIS ERROR")
+        print("PDF ANALYSIS ERROR")
         print("=" * 60)
 
         print(
