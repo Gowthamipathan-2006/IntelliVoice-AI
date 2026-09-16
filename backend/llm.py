@@ -126,7 +126,13 @@ OLLAMA_TIMEOUT = int(
     )
 )
 
-
+USE_OLLAMA_FALLBACK = (
+    os.getenv(
+        "USE_OLLAMA_FALLBACK",
+        "true"
+    ).lower()
+    == "true"
+)
 # ============================================================
 # SYSTEM INSTRUCTION
 # ============================================================
@@ -857,11 +863,16 @@ def generate_response(
             "Gemini unavailable."
         )
 
-
         print(
             f"Gemini error: {gemini_error}"
         )
 
+        if not USE_OLLAMA_FALLBACK:
+
+            return (
+                "I'm sorry, but the AI service is "
+                "temporarily unavailable. Please try again."
+            )
 
         print(
             "Switching to Ollama..."
